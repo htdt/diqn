@@ -1,0 +1,34 @@
+agent:
+  gamma: 0.99
+  n_step: 4
+  target_tau: .005
+  hidden_sizes: [16, 16]
+  quantile_dim: 8
+  quantile_samples: 8
+  quantile_samples_eval: 8
+
+lr:
+  start: .001
+  decay_rate: 1
+  update_every: 1
+  last_update: 0
+
+buffer:
+  warmup: 200
+  size: 10000
+  batch_size: 32
+
+env:
+  name: CartPole-v0
+  num: 1
+
+exploration:
+  decay_period: 3000
+  warmup: 200
+  epsilon: .01
+
+train:
+  steps: 15000
+  log_every: 100
+  checkpoint_every: 15000
+  checkpoint_name: models/cartpole_{n_iter}.pt

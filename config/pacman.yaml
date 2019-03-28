@@ -1,0 +1,40 @@
+conv:
+  channels: [32, 64, 64]
+  kernel_size: [8, 4, 3]
+  stride: [4, 2, 1]
+
+agent:
+  gamma: 0.99
+  n_step: 3
+  target_tau: .005
+  hidden_sizes: [512]
+  quantile_dim: 32
+  quantile_samples: 32
+  quantile_samples_eval: 32  
+
+lr:
+  start: .0001
+  decay_rate: .955
+  update_every: 12000
+  last_update: 100
+
+buffer:
+  warmup: 10000
+  size: 500000
+  batch_size: 128
+
+env:
+  name: MsPacmanNoFrameskip-v4
+  frame_stack: 4
+  num: 16
+
+exploration:
+  decay_period: 60000
+  warmup: 10000
+  epsilon: .01
+
+train:
+  steps: 9000000
+  log_every: 500
+  checkpoint_every: 50000
+  checkpoint_name: models/pacman_{n_iter}.pt

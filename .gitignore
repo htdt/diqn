@@ -1,0 +1,6 @@
+**/__pycache__
+runs
+*.pt
+.vscode
+.env
+.DS_Store
