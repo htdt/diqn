@@ -27,7 +27,7 @@ class EnvRunner:
         yield {'obs': obs}
 
         while True:
-            action = self._act(obs).unsqueeze(1)
+            action = self._act(obs)
             obs, reward, terminal, infos = self.envs.step(action)
 
             for info in infos:
@@ -44,5 +44,5 @@ class EnvRunner:
             else:
                 ep_info = None
 
-            yield {'obs': obs, 'action': action, 'reward': reward,
+            yield {'obs': obs, 'action': action.unsqueeze(1), 'reward': reward,
                    'terminal': terminal, 'ep_info': ep_info}
